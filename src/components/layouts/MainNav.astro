@@ -1,0 +1,91 @@
+<div class="container navigation__container">
+  <a href="#home" class="navigation__logo">
+    <!-- TODO: Adicionar logo caso existir -->
+    Doctor<span class="navigation__logo-text">Care</span>
+    <span class="sr-only">Home</span>
+  </a>
+  <nav class="navigation__menu">
+    <ul class="navigation__menu-list">
+      <li class="navigation__menu-item">
+        <a href="#home" class="navigation__menu-link">Início</a>
+      </li>
+      <li class="navigation__menu-item">
+        <a href="#services" class="navigation__menu-link">Serviços</a>
+      </li>
+      <li class="navigation__menu-item">
+        <a href="#about" class="navigation__menu-link">Sobre</a>
+      </li>
+      <li class="navigation__menu-item">
+        <a href="#contato" class="navigation__menu-link">Contato</a>
+      </li>
+    </ul>
+  </nav>
+  <a href="#contato" class="btn btn-outline navigation__button">
+    Agendar consulta
+  </a>
+</div>
+
+<style>
+  .navigation__container {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .navigation__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+    }
+
+    .navigation__logo {
+      font-size: 1.5rem;
+    }
+
+    .navigation__logo-text {
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .navigation__menu-list {
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .navigation__menu-item {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .navigation__menu-link {
+      color: var(--brand);
+      opacity: 0.6;
+    }
+
+    .navigation__menu-link.active {
+      color: var(--brand);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".navigation__menu-link");
+
+    function setActiveLink() {
+      links.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === window.location.hash) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("hashchange", setActiveLink);
+    setActiveLink();
+  });
+</script>
